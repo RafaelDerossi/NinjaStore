@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Building Blocks\NinjaStore.Core\NinjaStore.Core.csproj" />
+    <ProjectReference Include="..\NinjaStore.Clientes.Domain\NinjaStore.Clientes.Domain.csproj" />
+    <ProjectReference Include="..\NinjaStore.Clientes.Infra\NinjaStore.Clientes.Infra.csproj" />
+  </ItemGroup>
+
+</Project>
