@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace NinjaStore.Core.Messages.CommonMessages.IntegrationEvents
+namespace NinjaStore.Core.Messages.CommonMessages
 {
     public class ResponseMessage : Message
     {

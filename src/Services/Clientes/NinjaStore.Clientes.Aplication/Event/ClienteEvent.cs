@@ -1,5 +1,5 @@
 ﻿using NinjaStore.Core.ValueObjects;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonMessages;
 
 namespace NinjaStore.Clientes.Aplication.Events
 {

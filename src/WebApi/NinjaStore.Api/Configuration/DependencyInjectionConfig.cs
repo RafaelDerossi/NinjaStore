@@ -17,6 +17,7 @@ using NinjaStore.Pedidos.Domain.Interfaces;
 using NinjaStore.Pedidos.Infra.Data.Repository;
 using NinjaStore.Pedidos.Aplication.Events;
 using NinjaStore.Pedidos.Aplication.Query;
+using NinjaStore.Core.Messages.IntegrationEvents;
 
 namespace NinjaStore.Api.Configuration
 {

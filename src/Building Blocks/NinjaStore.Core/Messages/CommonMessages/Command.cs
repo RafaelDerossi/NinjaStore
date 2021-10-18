@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using MediatR;
 
-namespace NinjaStore.Core.Messages
+namespace NinjaStore.Core.Messages.CommonMessages
 {
     public abstract class Command : Message, IRequest<ValidationResult>
     {

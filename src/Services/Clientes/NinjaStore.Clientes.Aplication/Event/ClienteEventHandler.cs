@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonHandlers;
 using NinjaStore.Clientes.Domain.FlatModel;
 using NinjaStore.Clientes.Domain.Interfaces;
 using System.Threading;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NinjaStore.Clientes.Aplication.Events
 {
-    public class ClienteEventHandler : CommandHandler,
+    public class ClienteEventHandler : EventHandler,
          INotificationHandler<ClienteAdicionadoEvent>,
          System.IDisposable
     {

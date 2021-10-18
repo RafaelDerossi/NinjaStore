@@ -2,7 +2,7 @@
 using NinjaStore.Core.Helpers;
 using MediatR;
 
-namespace NinjaStore.Core.Messages
+namespace NinjaStore.Core.Messages.CommonMessages
 {
     public abstract class Event : Message, INotification
     {

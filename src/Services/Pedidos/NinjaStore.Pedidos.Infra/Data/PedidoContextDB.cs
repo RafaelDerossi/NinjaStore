@@ -4,7 +4,7 @@ using NinjaStore.Core.Data;
 using NinjaStore.Core.Extensions;
 using NinjaStore.Core.Helpers;
 using NinjaStore.Core.Mediator;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonMessages;
 using NinjaStore.Pedidos.Domain;
 using NinjaStore.Pedidos.Domain.FlatModel;
 using System;

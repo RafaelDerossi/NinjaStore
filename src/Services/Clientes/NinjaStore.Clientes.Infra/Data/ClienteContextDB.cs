@@ -6,7 +6,7 @@ using NinjaStore.Core.Data;
 using NinjaStore.Core.Extensions;
 using NinjaStore.Core.Helpers;
 using NinjaStore.Core.Mediator;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonMessages;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

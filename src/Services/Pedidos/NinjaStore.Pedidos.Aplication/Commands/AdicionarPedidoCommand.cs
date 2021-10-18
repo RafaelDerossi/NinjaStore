@@ -1,5 +1,5 @@
-﻿using NinjaStore.Pedidos.Aplication.Commands.Validations;
-using NinjaStore.Pedidos.Aplication.DTO;
+﻿using NinjaStore.Core.Messages.DTO;
+using NinjaStore.Pedidos.Aplication.Commands.Validations;
 using System;
 using System.Collections.Generic;
 

@@ -1,4 +1,4 @@
-﻿using NinjaStore.Core.Messages;
+﻿using NinjaStore.Core.Messages.CommonMessages;
 
 namespace NinjaStore.Produtos.Aplication.Events
 {

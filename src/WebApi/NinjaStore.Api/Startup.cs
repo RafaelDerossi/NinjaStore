@@ -22,7 +22,9 @@ namespace NinjaStore.Api
         {
             services.AddApiConfiguration(Configuration);
 
-            services.AddJwtConfiguration(Configuration);            
+            services.AddJwtConfiguration(Configuration);
+
+            services.ConfigurarAutoMapper();
 
             services.AddSwaggerConfiguration();
 

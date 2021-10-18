@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 using MediatR;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonHandlers;
 using NinjaStore.Produtos.Aplication.Events;
 using NinjaStore.Produtos.Domain;
 using NinjaStore.Produtos.Domain.Interfaces;

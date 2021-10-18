@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonHandlers;
 using NinjaStore.Produtos.Domain.FlatModel;
 using NinjaStore.Produtos.Domain.Interfaces;
 using System.Threading;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NinjaStore.Produtos.Aplication.Events
 {
-    public class ProdutoEventHandler : CommandHandler,
+    public class ProdutoEventHandler : EventHandler,
          INotificationHandler<ProdutoAdicionadoEvent>,
          System.IDisposable
     {

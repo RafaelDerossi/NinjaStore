@@ -2,7 +2,7 @@
 using NinjaStore.Core.Data;
 using FluentValidation.Results;
 
-namespace NinjaStore.Core.Messages
+namespace NinjaStore.Core.Messages.CommonHandlers
 {
     public class CommandHandler
     {

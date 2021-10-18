@@ -5,7 +5,7 @@ namespace NinjaStore.Pedidos.Aplication.ViewModels
 {
     public class ProdutoViewModel
     {
-        public Guid Id { get; set; }
+        public Guid ProdutoId { get; set; }
 
         public string Descricao { get; set; }
 

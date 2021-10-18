@@ -1,4 +1,4 @@
-﻿using NinjaStore.Core.Messages;
+﻿using NinjaStore.Core.Messages.CommonMessages;
 using System;
 
 namespace NinjaStore.Produtos.Aplication.Commands

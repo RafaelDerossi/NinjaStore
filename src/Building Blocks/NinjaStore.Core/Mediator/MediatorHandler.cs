@@ -1,8 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using NinjaStore.Core.Messages;
+﻿using System.Threading.Tasks;
 using FluentValidation.Results;
 using MediatR;
+using NinjaStore.Core.Messages.CommonMessages;
 
 namespace NinjaStore.Core.Mediator
 {

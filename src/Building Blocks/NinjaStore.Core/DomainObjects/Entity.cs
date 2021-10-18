@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NinjaStore.Core.Helpers;
 using NinjaStore.Core.Messages;
 using FluentValidation.Results;
+using NinjaStore.Core.Messages.CommonMessages;
 
 namespace NinjaStore.Core.DomainObjects
 {

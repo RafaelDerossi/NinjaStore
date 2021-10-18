@@ -1,10 +1,9 @@
 ﻿using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using NinjaStore.Core.Data;
-using NinjaStore.Core.Extensions;
 using NinjaStore.Core.Helpers;
 using NinjaStore.Core.Mediator;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonMessages;
 using NinjaStore.Pedidos.Domain;
 using NinjaStore.Pedidos.Domain.FlatModel;
 using System;
@@ -15,16 +14,13 @@ namespace NinjaStore.Pedidos.Infra.Data
 {
     public class PedidoQueryContextDB : DbContext, IUnitOfWorks
     {
-        private readonly IMediatorHandler _mediatorHandler;
-
         public DbSet<PedidoFlat> PedidosFlat { get; set; }
 
         public DbSet<ProdutoDoPedidoFlat> ProdutosFlat { get; set; }
 
-        public PedidoQueryContextDB(DbContextOptions<PedidoQueryContextDB> options, IMediatorHandler mediatorHandler)
+        public PedidoQueryContextDB(DbContextOptions<PedidoQueryContextDB> options)
             : base(options)
         {
-            _mediatorHandler = mediatorHandler;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -6,14 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NinjaStore.Clientes.Aplication.Query;
-using NinjaStore.Clientes.Aplication.ViewModels;
-using NinjaStore.Clientes.Aplication.Commands;
-using NinjaStore.Clientes.Domain.FlatModel;
 using NinjaStore.Pedidos.Aplication.ViewModels;
 using NinjaStore.Pedidos.Aplication.Commands;
-using NinjaStore.Pedidos.Aplication.DTO;
 using NinjaStore.Pedidos.Domain.FlatModel;
 using NinjaStore.Pedidos.Aplication.Query;
+using NinjaStore.Core.Messages.DTO;
+using AutoMapper;
 
 namespace NinjaStore.Api.Controllers
 {
@@ -21,19 +19,21 @@ namespace NinjaStore.Api.Controllers
     public class PedidoController : MainController
     {
         private readonly IMediatorHandler _mediatorHandler;
-
         private readonly IPedidoQuery _pedidoQuery;
-
-        private readonly IClienteQuery _clienteQuery;       
+        private readonly IClienteQuery _clienteQuery;
+        private readonly IMapper _mapper;
 
         public PedidoController
-            (IMediatorHandler mediatorHandler, IClienteQuery clienteQuery,
-             IPedidoQuery pedidoQuery)
+            (IMediatorHandler mediatorHandler, IPedidoQuery pedidoQuery,
+             IClienteQuery clienteQuery, IMapper mapper)
         {
             _mediatorHandler = mediatorHandler;
-            _clienteQuery = clienteQuery;
             _pedidoQuery = pedidoQuery;
+            _clienteQuery = clienteQuery;
+            _mapper = mapper;
         }
+
+
 
 
         /// <summary>
@@ -64,7 +64,8 @@ namespace NinjaStore.Api.Controllers
         /// -- Lixeira: Informa se o produto esta na lixeira no pedido;   
         /// -- Descricao : Descrição do produto no pedido;   
         /// -- Foto: Foto do produto no pedido;   
-        /// -- Valor: Valor do produto no pedido;   
+        /// -- Valor: Valor do produto no pedido;
+        /// -- Quantidade: Quantidade pedida do produto no pedido; 
         /// -- Desconto: Desconto do produto no pedido;   
         /// -- ValorTotal: Total do produto no pedido;   
         /// -- PedidoFlatId: Guid do pedido;  
@@ -90,6 +91,7 @@ namespace NinjaStore.Api.Controllers
         /// -- Descricao: Descrição do produto (Obrigatório)(De 1 a 200 caracteres);    
         /// -- Foto: Foto do profuto;   
         /// -- Valor: Preço do produto;   
+        /// -- Quantidade: Quantidade pedida do produto no pedido; 
         /// -- Desconto: Valor do desconto do produto;   
         /// -- ValorTotal: Valor total do produto;   
         /// </param>        
@@ -104,7 +106,7 @@ namespace NinjaStore.Api.Controllers
 
             var clienteDTO = new ClienteDTO(cliente.Id, cliente.Nome, cliente.Email, cliente.Aldeia);
 
-            var produtosDTO = viewModel.Produtos.Select(ProdutoDTO.Mapear).ToList();
+            var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(viewModel.Produtos).ToList();
 
             var comando = new AdicionarPedidoCommand(clienteDTO, produtosDTO);           
 

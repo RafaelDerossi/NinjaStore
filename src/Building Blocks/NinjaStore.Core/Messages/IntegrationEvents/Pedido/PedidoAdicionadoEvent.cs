@@ -1,9 +1,9 @@
 ﻿using NinjaStore.Core.Enumeradores;
-using NinjaStore.Pedidos.Aplication.DTO;
+using NinjaStore.Core.Messages.DTO;
 using System;
 using System.Collections.Generic;
 
-namespace NinjaStore.Pedidos.Aplication.Events
+namespace NinjaStore.Core.Messages.IntegrationEvents
 {
     public class PedidoAdicionadoEvent : PedidoEvent
     {

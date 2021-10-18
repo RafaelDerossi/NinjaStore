@@ -1,10 +1,9 @@
 ﻿using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using NinjaStore.Core.Data;
-using NinjaStore.Core.Extensions;
 using NinjaStore.Core.Helpers;
 using NinjaStore.Core.Mediator;
-using NinjaStore.Core.Messages;
+using NinjaStore.Core.Messages.CommonMessages;
 using NinjaStore.Clientes.Domain;
 using NinjaStore.Clientes.Domain.FlatModel;
 using System;
@@ -16,15 +15,12 @@ namespace NinjaStore.Clientes.Infra.Data
 {
     public class ClienteQueryContextDB : DbContext, IUnitOfWorks
     {
-        private readonly IMediatorHandler _mediatorHandler;
-
         public DbSet<ClienteFlat> ClientesFlat { get; set; }      
 
 
-        public ClienteQueryContextDB(DbContextOptions<ClienteQueryContextDB> options, IMediatorHandler mediatorHandler)
+        public ClienteQueryContextDB(DbContextOptions<ClienteQueryContextDB> options)
             : base(options)
-        {
-            _mediatorHandler = mediatorHandler;
+        {            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
