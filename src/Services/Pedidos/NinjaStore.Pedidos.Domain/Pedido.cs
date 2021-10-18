@@ -74,5 +74,13 @@ namespace NinjaStore.Pedidos.Domain
             _Produtos.Add(produto);
         }
 
+        public void AprovarPedido() => Status = StatusDePedido.APROVADO;
+
+        public void CancelarPedido(string justificativa)
+        {
+            Status = StatusDePedido.CANCELADO;
+            JustificativaDoCancelamento = justificativa;
+        }
+
     }
 }

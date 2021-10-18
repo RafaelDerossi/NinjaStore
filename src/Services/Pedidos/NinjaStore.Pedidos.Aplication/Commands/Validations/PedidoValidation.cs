@@ -31,5 +31,12 @@ namespace NinjaStore.Pedidos.Aplication.Commands.Validations
                 Regras.RuleFor(p => p.ValorTotal).NotEmpty().NotNull();
             });          
         }
+
+        protected void ValidateJustificaticaCancelamento()
+        {
+            RuleFor(c => c.JustificativaCancelamento)
+                .NotEmpty().WithMessage("A justificativa não pode estar vazia!")
+                .Length(2, 200).WithMessage("A justificativa deve ter entre 1 e 200 caracteres!");
+        }
     }
 }

@@ -17,7 +17,7 @@ using NinjaStore.Pedidos.Domain.Interfaces;
 using NinjaStore.Pedidos.Infra.Data.Repository;
 using NinjaStore.Pedidos.Aplication.Events;
 using NinjaStore.Pedidos.Aplication.Query;
-using NinjaStore.Core.Messages.IntegrationEvents;
+using NinjaStore.Core.Messages.IntegrationEvents.Pedidos;
 
 namespace NinjaStore.Api.Configuration
 {
@@ -36,15 +36,23 @@ namespace NinjaStore.Api.Configuration
 
             #region Produto -Contexto
             //Produto
-            services.AddScoped<IRequestHandler<AdicionarProdutoCommand, ValidationResult>, ProdutoCommandHandler>();            
+            services.AddScoped<IRequestHandler<AdicionarProdutoCommand, ValidationResult>, ProdutoCommandHandler>();
+            services.AddScoped<IRequestHandler<DebitarEstoqueCommand, ValidationResult>, ProdutoCommandHandler>();
             services.AddScoped<INotificationHandler<ProdutoAdicionadoEvent>, ProdutoEventHandler>();
-
+            services.AddScoped<INotificationHandler<EstoqueDebitadoEvent>, ProdutoEventHandler>();
+            services.AddScoped<INotificationHandler<PedidoAdicionadoEvent>, ProdutoEventHandler>();
             #endregion
 
             #region Pedido -Contexto
             //Pedido            
             services.AddScoped<IRequestHandler<AdicionarPedidoCommand, ValidationResult>, PedidoCommandHandler>();
+            services.AddScoped<IRequestHandler<AprovarPedidoCommand, ValidationResult>, PedidoCommandHandler>();
+            services.AddScoped<IRequestHandler<CancelarPedidoCommand, ValidationResult>, PedidoCommandHandler>();
             services.AddScoped<INotificationHandler<PedidoAdicionadoEvent>, PedidoEventHandler>();
+            services.AddScoped<INotificationHandler<PedidoAprovadoEvent>, PedidoEventHandler>();
+            services.AddScoped<INotificationHandler<PedidoCanceladoEvent>, PedidoEventHandler>();
+            services.AddScoped<INotificationHandler<EstoqueDoPedidoDebitadoEvent>, PedidoEventHandler>();
+            services.AddScoped<INotificationHandler<EstoqueDoPedidoInsuficienteEvent>, PedidoEventHandler>();
 
             #endregion
 

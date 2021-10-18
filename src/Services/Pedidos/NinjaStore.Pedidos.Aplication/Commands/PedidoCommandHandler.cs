@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 using NinjaStore.Core.Messages.CommonHandlers;
-using NinjaStore.Core.Messages.IntegrationEvents;
+using NinjaStore.Core.Messages.IntegrationEvents.Pedidos;
 using NinjaStore.Pedidos.Domain;
 using NinjaStore.Pedidos.Domain.Interfaces;
 using System;
@@ -12,6 +12,8 @@ namespace NinjaStore.Pedidos.Aplication.Commands
 {
     public class PedidoCommandHandler : CommandHandler,
          IRequestHandler<AdicionarPedidoCommand, ValidationResult>,
+         IRequestHandler<AprovarPedidoCommand, ValidationResult>,
+         IRequestHandler<CancelarPedidoCommand, ValidationResult>,
          IDisposable
     {
 
@@ -47,7 +49,48 @@ namespace NinjaStore.Pedidos.Aplication.Commands
 
             return await PersistirDados(_pedidoRepository.UnitOfWork);
         }
-               
+
+        public async Task<ValidationResult> Handle(AprovarPedidoCommand request, CancellationToken cancellationToken)
+        {
+            var pedido = await _pedidoRepository.ObterPorId(request.AggregateId);
+            if (pedido == null)
+            {
+                AdicionarErro("Pedido não encontrado");
+                return ValidationResult;
+            }
+                
+
+            pedido.AprovarPedido();
+
+            _pedidoRepository.Atualizar(pedido);
+
+            //Evento
+            pedido.AdicionarEvento
+                (new PedidoAprovadoEvent(pedido.Id));
+
+            return await PersistirDados(_pedidoRepository.UnitOfWork);
+        }
+
+        public async Task<ValidationResult> Handle(CancelarPedidoCommand request, CancellationToken cancellationToken)
+        {
+            var pedido = await _pedidoRepository.ObterPorId(request.Id);
+            if (pedido == null)
+            {
+                AdicionarErro("Pedido não encontrado");
+                return ValidationResult;
+            }
+
+            pedido.CancelarPedido(request.JustificativaCancelamento);
+
+            _pedidoRepository.Atualizar(pedido);
+
+            //Evento
+            pedido.AdicionarEvento
+                (new PedidoCanceladoEvent(pedido.Id, request.JustificativaCancelamento));
+
+            return await PersistirDados(_pedidoRepository.UnitOfWork);
+        }
+
 
         public void Dispose()
         {

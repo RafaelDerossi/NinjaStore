@@ -12,6 +12,7 @@ namespace NinjaStore.Produtos.Aplication.Commands
 {
     public class ProdutoCommandHandler : CommandHandler,
          IRequestHandler<AdicionarProdutoCommand, ValidationResult>,
+         IRequestHandler<DebitarEstoqueCommand, ValidationResult>,
          IDisposable
     {
 
@@ -21,6 +22,7 @@ namespace NinjaStore.Produtos.Aplication.Commands
         {
             _produtoRepository = produtoRepository;
         }
+
 
 
         public async Task<ValidationResult> Handle(AdicionarProdutoCommand request, CancellationToken cancellationToken)
@@ -39,7 +41,30 @@ namespace NinjaStore.Produtos.Aplication.Commands
 
             return await PersistirDados(_produtoRepository.UnitOfWork);
         }
-               
+
+        public async Task<ValidationResult> Handle(DebitarEstoqueCommand request, CancellationToken cancellationToken)
+        {
+            var produto = await _produtoRepository.ObterPorId(request.Id);
+            if (produto == null)
+            {
+                AdicionarErro("Produto não encontrado");
+                return ValidationResult;
+            }
+                
+
+            var retorno = produto.DebitarEstoque(request.Quantidade);
+            if (!retorno.IsValid)
+                return retorno;
+
+            _produtoRepository.Atualizar(produto);
+
+            //Evento
+            produto.AdicionarEvento
+                (new EstoqueDebitadoEvent(produto.Id, request.Quantidade));
+
+            return await PersistirDados(_produtoRepository.UnitOfWork);
+        }
+
 
         public void Dispose()
         {

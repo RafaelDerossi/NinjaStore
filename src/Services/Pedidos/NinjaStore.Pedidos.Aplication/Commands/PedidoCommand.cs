@@ -11,6 +11,8 @@ namespace NinjaStore.Pedidos.Aplication.Commands
 
         public string Numero { get; protected set; }
 
+        public string JustificativaCancelamento { get; protected set; }
+
         public ClienteDTO Cliente { get; protected set; }        
 
         public List<ProdutoDTO> Produtos { get; protected set; }

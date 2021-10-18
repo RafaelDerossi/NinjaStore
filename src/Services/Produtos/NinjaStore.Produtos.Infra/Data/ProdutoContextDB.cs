@@ -54,7 +54,7 @@ namespace NinjaStore.Produtos.Infra.Data
                 {
                     entry.Property("DataDeCadastro").IsModified = false;
                     entry.Property("DataDeAlteracao").CurrentValue =
-                        TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, cetZone);
+                        TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, cetZone);                    
                 }
             }
 

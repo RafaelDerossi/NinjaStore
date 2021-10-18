@@ -57,6 +57,7 @@ namespace NinjaStore.Pedidos.Infra.Data
                     entry.Property("DataDeCadastro").IsModified = false;
                     entry.Property("DataDeAlteracao").CurrentValue =
                         TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, cetZone);
+                    entry.Property("Numero").IsModified = false;
                 }
             }
 
