@@ -1,5 +1,5 @@
-﻿using NinjaStore.Pedidos.Aplication.Commands;
-using NinjaStore.Pedidos.Aplication.DTO;
+﻿using NinjaStore.Core.Messages.DTO;
+using NinjaStore.Pedidos.Aplication.Commands;
 using System;
 using System.Collections.Generic;
 
@@ -11,8 +11,8 @@ namespace NinjaStore.Pedidos.Tests
         {
             var cliente = new ClienteDTO(Guid.NewGuid(), "Nome do Cliente", "rafael@gmail.com", "aldeia");
 
-            var produto1 = new ProdutoDTO(Guid.NewGuid(), Guid.NewGuid(), "Produto 1", "foto", 10, 1, 1, 9);
-            var produto2 = new ProdutoDTO(Guid.NewGuid(), Guid.NewGuid(), "Produto 2", "foto", 20, 1, 2, 18);
+            var produto1 = new ProdutoDTO(Guid.NewGuid(), "Produto 1", "foto", 10, 1, 1, 9);
+            var produto2 = new ProdutoDTO(Guid.NewGuid(), "Produto 2", "foto", 20, 1, 2, 18);
 
             var produtos = new List<ProdutoDTO>
             {
