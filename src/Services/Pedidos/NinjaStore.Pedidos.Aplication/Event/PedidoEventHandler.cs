@@ -80,6 +80,7 @@ namespace NinjaStore.Pedidos.Aplication.Events
             await PersistirDados(_pedidoQueryRepository.UnitOfWork);
         }
 
+
         public async Task Handle(PedidoCanceladoEvent notification, CancellationToken cancellationToken)
         {
             var pedidoFlat = await _pedidoQueryRepository.ObterPorId(notification.PedidoId);

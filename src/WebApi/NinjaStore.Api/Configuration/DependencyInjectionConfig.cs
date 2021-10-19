@@ -31,16 +31,7 @@ namespace NinjaStore.Api.Configuration
             #region Cliente -Contexto
             //Cliente
             services.AddScoped<IRequestHandler<AdicionarClienteCommand, ValidationResult>, ClienteCommandHandler>();            
-            services.AddScoped<INotificationHandler<ClienteAdicionadoEvent>, ClienteEventHandler>();            
-            #endregion
-
-            #region Produto -Contexto
-            //Produto
-            services.AddScoped<IRequestHandler<AdicionarProdutoCommand, ValidationResult>, ProdutoCommandHandler>();
-            services.AddScoped<IRequestHandler<DebitarEstoqueCommand, ValidationResult>, ProdutoCommandHandler>();
-            services.AddScoped<INotificationHandler<ProdutoAdicionadoEvent>, ProdutoEventHandler>();
-            services.AddScoped<INotificationHandler<EstoqueDebitadoEvent>, ProdutoEventHandler>();
-            services.AddScoped<INotificationHandler<PedidoAdicionadoEvent>, ProdutoEventHandler>();
+            services.AddScoped<INotificationHandler<ClienteAdicionadoEvent>, ClienteEventHandler>();
             #endregion
 
             #region Pedido -Contexto
@@ -55,6 +46,17 @@ namespace NinjaStore.Api.Configuration
             services.AddScoped<INotificationHandler<EstoqueDoPedidoInsuficienteEvent>, PedidoEventHandler>();
 
             #endregion
+
+            #region Produto -Contexto
+            //Produto
+            services.AddScoped<IRequestHandler<AdicionarProdutoCommand, ValidationResult>, ProdutoCommandHandler>();
+            services.AddScoped<IRequestHandler<DebitarEstoqueCommand, ValidationResult>, ProdutoCommandHandler>();
+            services.AddScoped<INotificationHandler<ProdutoAdicionadoEvent>, ProdutoEventHandler>();
+            services.AddScoped<INotificationHandler<EstoqueDebitadoEvent>, ProdutoEventHandler>();
+            services.AddScoped<INotificationHandler<PedidoAdicionadoEvent>, ProdutoEventHandler>();
+            #endregion
+
+           
 
 
 
